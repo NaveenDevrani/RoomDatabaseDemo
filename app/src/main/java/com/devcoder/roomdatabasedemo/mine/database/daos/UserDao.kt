@@ -1,11 +1,11 @@
-package com.devcoder.roomdatabasedemo.database.daos
+package com.devcoder.roomdatabasedemo.mine.database.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.devcoder.roomdatabasedemo.database.entities.User
+import com.devcoder.roomdatabasedemo.mine.database.entities.User
 
 @Dao
 interface UserDao {

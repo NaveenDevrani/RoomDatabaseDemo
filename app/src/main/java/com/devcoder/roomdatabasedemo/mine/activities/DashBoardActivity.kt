@@ -1,18 +1,17 @@
-package com.devcoder.roomdatabasedemo.activities
+package com.devcoder.roomdatabasedemo.mine.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devcoder.roomdatabasedemo.R
-import com.devcoder.roomdatabasedemo.adapter.UserAdapter
-import com.devcoder.roomdatabasedemo.database.AppDatabase
-import com.devcoder.roomdatabasedemo.database.UserviewModel
-import com.devcoder.roomdatabasedemo.database.entities.User
+import com.devcoder.roomdatabasedemo.mine.adapter.UserAdapter
+import com.devcoder.roomdatabasedemo.mine.database.AppDatabase
+import com.devcoder.roomdatabasedemo.mine.database.UserviewModel
+import com.devcoder.roomdatabasedemo.mine.database.entities.User
 import kotlinx.android.synthetic.main.activity_dash_board.*
 
 class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,7 +19,6 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
     var userList: LiveData<List<User>>? = null
     var list: List<User>? = null
     var userdatabase: AppDatabase? = null
-    //    var userviewModel: UserviewModel? = null
     val adapter: UserAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +26,6 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_dash_board)
         setClickListener()
         recyclerView?.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-//        list=AppDatabase.getInstance(this).userDao().getAllUser
         setDataAdapter()
         val userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
         userviewModel.getUserData()?.observe(this,
@@ -56,8 +53,6 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDataAdapter() {
-//        userdatabase = AppDatabase.getInstance(this)
-//        userList = userdatabase?.userDao()?.getUserData()
         if (userList != null)
             recyclerView.adapter = UserAdapter(this)
     }

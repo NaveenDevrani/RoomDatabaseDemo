@@ -1,16 +1,15 @@
-package com.devcoder.roomdatabasedemo.adapter
+package com.devcoder.roomdatabasedemo.mine.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.devcoder.roomdatabasedemo.R
-import com.devcoder.roomdatabasedemo.database.AppDatabase
-import com.devcoder.roomdatabasedemo.database.daos.UserDao
-import com.devcoder.roomdatabasedemo.database.entities.User
+import com.devcoder.roomdatabasedemo.mine.database.AppDatabase
+import com.devcoder.roomdatabasedemo.mine.database.daos.UserDao
+import com.devcoder.roomdatabasedemo.mine.database.entities.User
 
 class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 

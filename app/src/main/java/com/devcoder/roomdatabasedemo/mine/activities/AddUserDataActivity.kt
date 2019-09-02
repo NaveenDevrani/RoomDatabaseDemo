@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.activities
+package com.devcoder.roomdatabasedemo.mine.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,18 +8,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.devcoder.roomdatabasedemo.R
-import com.devcoder.roomdatabasedemo.database.AppDatabase
-import com.devcoder.roomdatabasedemo.database.UserviewModel
-import com.devcoder.roomdatabasedemo.database.entities.User
-import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.doAsync
+import com.devcoder.roomdatabasedemo.mine.database.UserviewModel
+import com.devcoder.roomdatabasedemo.mine.database.entities.User
+import kotlinx.android.synthetic.main.activity_add_user.*
 
 class AddUserDataActivity : AppCompatActivity(), View.OnClickListener {
 
     var userviewModel: UserviewModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_add_user)
         setClickListener()
         userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
 

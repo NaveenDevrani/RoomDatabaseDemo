@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.database.entities
+package com.devcoder.roomdatabasedemo.mine.database.entities
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
