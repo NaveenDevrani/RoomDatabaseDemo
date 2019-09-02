@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.mine.adapter
+package com.devcoder.roomdatabasedemo.roomdbKotlin.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,20 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcoder.roomdatabasedemo.R
-import com.devcoder.roomdatabasedemo.mine.database.AppDatabase
-import com.devcoder.roomdatabasedemo.mine.database.daos.UserDao
-import com.devcoder.roomdatabasedemo.mine.database.entities.User
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.AppDatabase
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.daos.UserDao
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 
-class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter(var context: Context, var userList: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
-    var userList: List<User>? = null
+//    var userList: List<User> = ArrayList()
     var userDao:UserDao?=null
     var appDatabase:AppDatabase?=null
-
-//    init {
-//        appDatabase= AppDatabase.getInstance(context)
-//        userList= appDatabase!!.userDao().getUserData()
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.user_adapter_view, parent, false)
@@ -28,21 +23,17 @@ class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.ViewH
     }
 
     override fun getItemCount(): Int {
-        return if (userList != null) userList!!.size else 0
+        return userList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (userList != null) {
-            var user: User = userList!![position]
-            holder.tv_name.text = user.name
-            holder.tv_address.text = user.address
-        } else
-            holder.tv_name.text = "no data found"
-
+        val user: User = userList!![position]
+        holder.tv_name.text = user.name
+        holder.tv_address.text = user.address
     }
 
     fun setUserData(list: List<User>) {
-        userList = list
+        userList=list
         notifyDataSetChanged()
     }
 

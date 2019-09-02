@@ -1,11 +1,12 @@
-package com.devcoder.roomdatabasedemo.mine.database.entities
+package com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+
+@Entity(tableName = "User")
 class User {
 
     @PrimaryKey(autoGenerate = true)
@@ -17,4 +18,6 @@ class User {
 
     @ColumnInfo(name = "address")
     var address: String? = ""
+
+
 }

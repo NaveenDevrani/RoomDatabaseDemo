@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.activities;
+package com.devcoder.roomdatabasedemo.roomdbjava.activities;
 
 
 import android.content.Intent;
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.devcoder.roomdatabasedemo.R;
-import com.devcoder.roomdatabasedemo.roomdemo.adaptors.PersonAdaptor;
-import com.devcoder.roomdatabasedemo.roomdemo.database.AppDatabase;
-import com.devcoder.roomdatabasedemo.roomdemo.database.AppExecutors;
-import com.devcoder.roomdatabasedemo.roomdemo.model.Person;
+import com.devcoder.roomdatabasedemo.roomdbjava.adaptors.PersonAdaptor;
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppDatabase;
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppExecutors;
+import com.devcoder.roomdatabasedemo.roomdbjava.model.Person;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_main);
 
         floatingActionButton = findViewById(R.id.addFAB);
 

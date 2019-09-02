@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.adaptors;
+package com.devcoder.roomdatabasedemo.roomdbjava.adaptors;
 
 
 import android.content.Context;
@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.devcoder.roomdatabasedemo.R;
-import com.devcoder.roomdatabasedemo.roomdemo.activities.EditActivity;
-import com.devcoder.roomdatabasedemo.roomdemo.constants.Constants;
-import com.devcoder.roomdatabasedemo.roomdemo.database.AppDatabase;
-import com.devcoder.roomdatabasedemo.roomdemo.model.Person;
+import com.devcoder.roomdatabasedemo.roomdbjava.activities.EditActivity;
+import com.devcoder.roomdatabasedemo.roomdbjava.constants.Constants;
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppDatabase;
+import com.devcoder.roomdatabasedemo.roomdbjava.model.Person;
 
 import java.util.List;
 

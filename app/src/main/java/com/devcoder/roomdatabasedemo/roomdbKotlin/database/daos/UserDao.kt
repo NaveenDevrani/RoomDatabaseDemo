@@ -1,11 +1,11 @@
-package com.devcoder.roomdatabasedemo.mine.database.daos
+package com.devcoder.roomdatabasedemo.roomdbKotlin.database.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.devcoder.roomdatabasedemo.mine.database.entities.User
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 
 @Dao
 interface UserDao {
@@ -22,6 +22,6 @@ interface UserDao {
     @Delete
     fun delete(user: User)
 
-    @get:Query("SELECT * FROM User")
+    @get:Query(value = "SELECT * FROM User")
     val getAllUser: List<User>
 }

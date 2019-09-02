@@ -1,12 +1,12 @@
-package com.devcoder.roomdatabasedemo.mine.database
+package com.devcoder.roomdatabasedemo.roomdbKotlin.database
 
 import android.app.Application
 import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.devcoder.roomdatabasedemo.mine.database.daos.UserDao
-import com.devcoder.roomdatabasedemo.mine.database.entities.User
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.daos.UserDao
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 
 class UserviewModel(application: Application) : AndroidViewModel(application) {
     private var TAG: String = this.javaClass.simpleName

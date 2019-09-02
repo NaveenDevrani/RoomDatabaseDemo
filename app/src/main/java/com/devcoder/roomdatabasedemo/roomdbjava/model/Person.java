@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.model;
+package com.devcoder.roomdatabasedemo.roomdbjava.model;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;

@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.activities;
+package com.devcoder.roomdatabasedemo.roomdbjava.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.devcoder.roomdatabasedemo.R;
-import com.devcoder.roomdatabasedemo.roomdemo.constants.Constants;
-import com.devcoder.roomdatabasedemo.roomdemo.database.AppDatabase;
-import com.devcoder.roomdatabasedemo.roomdemo.database.AppExecutors;
-import com.devcoder.roomdatabasedemo.roomdemo.model.Person;
+import com.devcoder.roomdatabasedemo.roomdbjava.constants.Constants;
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppDatabase;
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppExecutors;
+import com.devcoder.roomdatabasedemo.roomdbjava.model.Person;
 
 
 public class EditActivity extends AppCompatActivity {

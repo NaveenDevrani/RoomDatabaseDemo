@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.database;
+package com.devcoder.roomdatabasedemo.roomdbjava.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,7 +7,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.devcoder.roomdatabasedemo.roomdemo.model.Person;
+import com.devcoder.roomdatabasedemo.roomdbjava.model.Person;
 
 
 @Database(entities = {Person.class}, version = 1, exportSchema = false)

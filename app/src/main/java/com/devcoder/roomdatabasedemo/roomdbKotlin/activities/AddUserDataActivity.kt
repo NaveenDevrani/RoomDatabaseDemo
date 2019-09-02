@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.mine.activities
+package com.devcoder.roomdatabasedemo.roomdbKotlin.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,19 +8,22 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.devcoder.roomdatabasedemo.R
-import com.devcoder.roomdatabasedemo.mine.database.UserviewModel
-import com.devcoder.roomdatabasedemo.mine.database.entities.User
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.AppDatabase
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.UserviewModel
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
+import com.devcoder.roomdatabasedemo.roomdbjava.database.AppExecutors
 import kotlinx.android.synthetic.main.activity_add_user.*
 
 class AddUserDataActivity : AppCompatActivity(), View.OnClickListener {
 
     var userviewModel: UserviewModel? = null
+    var appDatabase:AppDatabase?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
         setClickListener()
         userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
-
+        appDatabase= AppDatabase.getInstance(applicationContext)
     }
 
     override fun onClick(view: View?) {
@@ -38,14 +41,24 @@ class AddUserDataActivity : AppCompatActivity(), View.OnClickListener {
         val name = et_name.text.toString()
         val address = et_address.text.toString()
         when {
-            TextUtils.isEmpty(name) -> Toast.makeText(this, "please enter your name", Toast.LENGTH_SHORT).show()
-            TextUtils.isEmpty(address) -> Toast.makeText(this, "please enter your address", Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(name) -> Toast.makeText(
+                this,
+                "please enter your name",
+                Toast.LENGTH_SHORT
+            ).show()
+            TextUtils.isEmpty(address) -> Toast.makeText(
+                this,
+                "please enter your address",
+                Toast.LENGTH_SHORT
+            ).show()
             else -> {
                 val user = User()
                 user.name = name
                 user.address = address
-                userviewModel?.insertUserData(user)
-                onBackPressed()
+                AppExecutors.getInstance().diskIO().execute {
+                    appDatabase?.userDao()?.insertUserData(user)
+                    finish()
+                }
             }
         }
     }

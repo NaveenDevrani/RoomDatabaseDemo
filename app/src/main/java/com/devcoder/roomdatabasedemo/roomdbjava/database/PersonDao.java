@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.database;
+package com.devcoder.roomdatabasedemo.roomdbjava.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.devcoder.roomdatabasedemo.roomdemo.model.Person;
+import com.devcoder.roomdatabasedemo.roomdbjava.model.Person;
 
 import java.util.List;
 

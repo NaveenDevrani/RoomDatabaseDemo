@@ -1,4 +1,4 @@
-package com.devcoder.roomdatabasedemo.roomdemo.database;
+package com.devcoder.roomdatabasedemo.roomdbjava.database;
 
 
 import android.os.Handler;
