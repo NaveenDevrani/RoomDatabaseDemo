@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devcoder.roomdatabasedemo.R
 import com.devcoder.roomdatabasedemo.roomdbKotlin.adapter.UserAdapter
 import com.devcoder.roomdatabasedemo.roomdbKotlin.database.AppDatabase
+import com.devcoder.roomdatabasedemo.roomdbKotlin.database.UserviewModel
 import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 import com.devcoder.roomdatabasedemo.roomdbjava.database.AppExecutors
 import kotlinx.android.synthetic.main.activity_dash_board.*
@@ -28,16 +29,13 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
         setClickListener()
         recyclerView?.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
 
-//        recyclerView?.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-//        setDataAdapter()
-
         mDb = AppDatabase.getInstance(applicationContext)
 
-//        val userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
-//        userviewModel.getUserData()?.observe(this,
-//            Observer<List<User>> {
-//                adapter?.setUserData(it)
-//            })
+        val userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
+        userviewModel.getUserData()?.observe(this,
+            Observer<List<User>> {
+                adapter?.setUserData(it)
+            })
 
     }
 
@@ -47,7 +45,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setClickListener() {
-        fab.setOnClickListener(this)
+        fab?.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -59,7 +57,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDataAdapter() {
-            recyclerView.adapter = list?.let { UserAdapter(this, it) }
+            recyclerView?.adapter = mylist?.let { UserAdapter(this, it) }
     }
     private fun retrieveTasks() {
         AppExecutors.getInstance().diskIO().execute {

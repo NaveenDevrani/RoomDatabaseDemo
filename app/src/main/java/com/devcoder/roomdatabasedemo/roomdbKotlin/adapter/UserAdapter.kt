@@ -13,7 +13,6 @@ import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 
 class UserAdapter(var context: Context, var userList: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
-//    var userList: List<User> = ArrayList()
     var userDao:UserDao?=null
     var appDatabase:AppDatabase?=null
 
@@ -27,7 +26,7 @@ class UserAdapter(var context: Context, var userList: List<User>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user: User = userList!![position]
+        val user: User = userList[position]
         holder.tv_name.text = user.name
         holder.tv_address.text = user.address
     }
