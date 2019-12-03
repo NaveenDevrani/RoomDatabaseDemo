@@ -67,3 +67,23 @@ The class that’s annotated with **@Database** should satisfy the following con
 **3.** Contain an abstract method that has 0 arguments and returns the class that is annotated with **@Dao.**     
 
 At runtime, you can acquire an instance of Database by calling Room.databaseBuilder() orRoom.inMemoryDatabaseBuilder().
+
+## Implementation of Room
+
+**1.** Open the build.gradle file for your app or module and add dependencies:
+In androidx kotlin
+```
+buildscript {
+    ext.room_version = '2.1.0-alpha01'
+}
+
+implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+ ```
+ In android
+ ```
+  implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+  ```
+  
+ 
