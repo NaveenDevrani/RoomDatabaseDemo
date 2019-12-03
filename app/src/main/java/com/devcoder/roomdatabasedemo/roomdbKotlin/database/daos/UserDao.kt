@@ -1,11 +1,9 @@
 package com.devcoder.roomdatabasedemo.roomdbKotlin.database.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
+
 
 @Dao
 interface UserDao {
@@ -24,4 +22,12 @@ interface UserDao {
 
     @get:Query(value = "SELECT * FROM User")
     val getAllUser: List<User>
+
+//    @Query("UPDATE User Where id=id ")
+//    fun upateUserInfo(id:Int,name:String,address:String)
+
+
+    @Update
+    fun updateUserData(user: User): Int
+
 }

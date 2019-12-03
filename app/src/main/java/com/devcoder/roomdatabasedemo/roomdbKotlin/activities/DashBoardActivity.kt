@@ -59,14 +59,13 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener {
     private fun setDataAdapter() {
             recyclerView?.adapter = mylist?.let { UserAdapter(this, it) }
     }
-    private fun retrieveTasks() {
+    public fun retrieveTasks() {
         AppExecutors.getInstance().diskIO().execute {
             val list: List<User>? = mDb?.userDao()?.getAllUser
             runOnUiThread {
                 if(list!=null){
                     mylist=list
                     setDataAdapter()
-//                    adapter?.setUserData(list)
                 }
             adapter?.notifyDataSetChanged()}
         }

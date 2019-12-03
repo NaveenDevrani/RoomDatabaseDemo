@@ -16,14 +16,32 @@ import kotlinx.android.synthetic.main.activity_add_user.*
 
 class AddUserDataActivity : AppCompatActivity(), View.OnClickListener {
 
+    var id: Int? = null
+    var name: String? = null
+    var address: String? = null
     var userviewModel: UserviewModel? = null
-    var appDatabase:AppDatabase?=null
+    var appDatabase: AppDatabase? = null
+    var action: String? = null
+    var isOperationUpdate: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
         setClickListener()
         userviewModel = ViewModelProviders.of(this).get(UserviewModel::class.java)
-        appDatabase= AppDatabase.getInstance(applicationContext)
+        appDatabase = AppDatabase.getInstance(applicationContext)
+        action = intent?.action
+        if (!action.isNullOrEmpty()) {
+            id = intent?.getIntExtra("id", 0)
+            name = intent?.getStringExtra("name") ?: ""
+            address = intent?.getStringExtra("address") ?: ""
+            et_name?.setText(name)
+            et_address?.setText(address)
+            isOperationUpdate = true
+            btnSubmit?.text = "Update"
+        } else {
+            isOperationUpdate = false
+            btnSubmit?.text = "Submit"
+        }
     }
 
     override fun onClick(view: View?) {
@@ -52,12 +70,24 @@ class AddUserDataActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.LENGTH_SHORT
             ).show()
             else -> {
-                val user = User()
-                user.name = name
-                user.address = address
-                AppExecutors.getInstance().diskIO().execute {
-                    appDatabase?.userDao()?.insertUserData(user)
-                    finish()
+                if (!isOperationUpdate) {
+                    val user = User()
+                    user.name = name
+                    user.address = address
+                    AppExecutors.getInstance().diskIO().execute {
+                        appDatabase?.userDao()?.insertUserData(user)
+                        finish()
+                    }
+                } else {
+                    val user = User()
+                    user.name = name
+                    user.address = address
+                    user.id = id!!
+                    AppExecutors.getInstance().diskIO().execute {
+                        appDatabase?.userDao()?.updateUserData(user)
+                        finish()
+                    }
+
                 }
             }
         }
