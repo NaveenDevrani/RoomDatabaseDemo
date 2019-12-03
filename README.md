@@ -25,6 +25,7 @@ Room is an ORM, Object Relational Mapping library. In other words, Room will map
 **4)** Room is built to work with LiveData and RxJava for data observation, while SQLite does not.  
 
 ## Components of Room DB
+![Optional Text](../master/diagram.jpg)
 
 Room has three main components of Room DB :
 **1)** Entity  
