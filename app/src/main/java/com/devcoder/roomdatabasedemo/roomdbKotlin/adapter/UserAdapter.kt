@@ -20,6 +20,7 @@ import com.devcoder.roomdatabasedemo.roomdbKotlin.database.AppDatabase
 import com.devcoder.roomdatabasedemo.roomdbKotlin.database.entities.User
 import com.devcoder.roomdatabasedemo.roomdbjava.database.AppExecutors
 
+
 class UserAdapter(var context: Context, var userList: List<User>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
     var alertDialog: AlertDialog? = null
