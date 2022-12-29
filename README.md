@@ -4,7 +4,7 @@ Room provides an abstraction layer over SQLite to allow fluent database access w
 Room is now considered as a better approach for data persistence than SQLiteDatabase. It makes it easier to work with SQLiteDatabase objects in your app, decreasing the amount of boilerplate code and verifying SQL queries at compile time.  
 
 ## Why use Room?  
-
+ 
 **1)** Compile-time verification of SQL queries. each @Query and @Entity is checked at the compile time, that preserves your app from crash issues at runtime and not only it checks the only syntax, but also missing tables.  
 **2)** Boilerplate code.  
 **3)** Easily integrated with other Architecture components (like LiveData)  
