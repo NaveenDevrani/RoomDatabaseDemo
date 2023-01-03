@@ -7,10 +7,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.*
 import com.devcoder.roomdatabasedemo.databinding.ActivityMainBinding
 import com.devcoder.roomdatabasedemo.db.entities.Contact
+import com.devcoder.roomdatabasedemo.db.entities.UserDetails
 import com.devcoder.roomdatabasedemo.viewmodels.AppViewModel
+import com.devcoder.roomdatabasedemo.worker.UpdateWork
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ContactsAdapter.OnItemClick {
@@ -37,7 +41,7 @@ class MainActivity : AppCompatActivity(), ContactsAdapter.OnItemClick {
         }
     }
 
-    private fun setAdapter(list: List<Contact>) {
+    private fun setAdapter(list: List<UserDetails>) {
         mAdapter.submitList(list)
     }
 
@@ -47,14 +51,18 @@ class MainActivity : AppCompatActivity(), ContactsAdapter.OnItemClick {
     }
 
     private fun getContact() {
-        viewModel.getContact().observe(this) {
+//        viewModel.getContact().observe(this) {
+//            Log.d("ContactList", "$it")
+//            setAdapter(it)
+//        }
+        viewModel.getUserDetails().observe(this) {
             Log.d("ContactList", "$it")
             setAdapter(it)
         }
     }
 
-    override fun onDelete(model: Contact) {
-        viewModel.deleteContact(model.id)
+    override fun onDelete(model: UserDetails) {
+        viewModel.deleteContact(model.contact.id)
     }
 
     private fun handleObserver() {

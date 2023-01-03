@@ -1,17 +1,14 @@
 package com.devcoder.roomdatabasedemo.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.devcoder.roomdatabasedemo.db.dao.ContactDao
 import com.devcoder.roomdatabasedemo.db.entities.Contact
+import com.devcoder.roomdatabasedemo.db.entities.ContactInfo
 import com.devcoder.roomdatabasedemo.utils.Converters
 
-@Database(entities = [Contact::class], version = 2)
+@Database(entities = [Contact::class, ContactInfo::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class ContactDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao

@@ -1,18 +1,19 @@
 package com.devcoder.roomdatabasedemo.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.devcoder.roomdatabasedemo.db.entities.Contact
+import com.devcoder.roomdatabasedemo.db.entities.UserDetails
+import com.devcoder.roomdatabasedemo.db.entities.ContactInfo
 
 @Dao
 interface ContactDao {
 
     @Insert
     suspend fun insertContact(contact: Contact): Long
+
+    @Insert
+    suspend fun insertContactInfo(contact: ContactInfo): Long
 
     @Update
     suspend fun updateContact(contact: Contact)
@@ -26,6 +27,13 @@ interface ContactDao {
     @Query("SELECT *FROM contact")
     fun getAllContact(): LiveData<List<Contact>>
 
+    @Transaction
     @Query("SELECT *FROM contact")
     fun getContact(): List<Contact>
+
+    //    @Query("Select *From contact inner join ContactInfo on contactId = ContactInfo.contactId")
+//    fun getUserDetails(): LiveData<List<UserDetails>>
+    @Transaction
+    @Query("Select *From contact")
+    fun getUserDetails(): LiveData<List<UserDetails>>
 }

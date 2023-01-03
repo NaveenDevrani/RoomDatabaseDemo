@@ -7,7 +7,7 @@ import java.util.Date
 
 @Entity(tableName = "contact")
 data class Contact(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey(autoGenerate = true) val id: Long=0,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "phone") val phone: String?,
     @ColumnInfo(name = "date") val date: Date?,

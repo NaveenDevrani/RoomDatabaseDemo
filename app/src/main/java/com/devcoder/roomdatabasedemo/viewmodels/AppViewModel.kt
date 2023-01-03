@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devcoder.roomdatabasedemo.db.entities.Contact
+import com.devcoder.roomdatabasedemo.db.entities.ContactInfo
+import com.devcoder.roomdatabasedemo.db.entities.UserDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,9 +16,10 @@ class AppViewModel @Inject constructor(private val repo: AppRepository) : ViewMo
 
     val insertObserver: MutableLiveData<Boolean> = MutableLiveData()
     val deleteObserver: MutableLiveData<Boolean> = MutableLiveData()
-    fun insertContact(contact: Contact) {
+    fun insertContact(contact: Contact, contactInfo: ContactInfo) {
         viewModelScope.launch {
-            insertObserver.postValue(repo.insertContact(contact) > 0)
+            val id = repo.insertContactAndInfo(contact, contactInfo)
+            insertObserver.postValue(id > 0)
         }
     }
 
@@ -24,10 +27,14 @@ class AppViewModel @Inject constructor(private val repo: AppRepository) : ViewMo
         return repo.getAllContacts()
     }
 
+    fun getUserDetails(): LiveData<List<UserDetails>> {
+        return repo.getAllUserDetails()
+    }
+
     fun deleteContact(id: Long) {
         viewModelScope.launch {
             val isDelete = repo.deleteContactWithId(id)
-            deleteObserver.postValue(isDelete>0)
+            deleteObserver.postValue(isDelete > 0)
         }
     }
 }
