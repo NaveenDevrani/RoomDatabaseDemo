@@ -23,6 +23,10 @@ class AppRepository @Inject constructor(private val contactDao: ContactDao) {
         return contactDao.getUserDetails()
     }
 
+    fun getUserDetailsById(id:Long): LiveData<List<UserDetails>> {
+        return contactDao.getUserDetailsById(id)
+    }
+
     suspend fun insertContact(contact: Contact): Long {
         return withContext(Dispatchers.IO) { contactDao.insertContact(contact) }
     }

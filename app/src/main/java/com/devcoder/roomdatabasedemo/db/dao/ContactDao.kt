@@ -3,8 +3,8 @@ package com.devcoder.roomdatabasedemo.db.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.devcoder.roomdatabasedemo.db.entities.Contact
-import com.devcoder.roomdatabasedemo.db.entities.UserDetails
 import com.devcoder.roomdatabasedemo.db.entities.ContactInfo
+import com.devcoder.roomdatabasedemo.db.entities.UserDetails
 
 @Dao
 interface ContactDao {
@@ -36,4 +36,8 @@ interface ContactDao {
     @Transaction
     @Query("Select *From contact")
     fun getUserDetails(): LiveData<List<UserDetails>>
+
+    @Transaction
+    @Query("Select *From contact WHERE id= :id")
+    fun getUserDetailsById(id: Long): LiveData<List<UserDetails>>
 }

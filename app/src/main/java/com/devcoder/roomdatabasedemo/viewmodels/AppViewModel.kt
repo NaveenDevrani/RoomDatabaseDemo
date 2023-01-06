@@ -31,6 +31,10 @@ class AppViewModel @Inject constructor(private val repo: AppRepository) : ViewMo
         return repo.getAllUserDetails()
     }
 
+    fun getUserDetailsById(id:Long): LiveData<List<UserDetails>> {
+        return repo.getUserDetailsById(id)
+    }
+
     fun deleteContact(id: Long) {
         viewModelScope.launch {
             val isDelete = repo.deleteContactWithId(id)

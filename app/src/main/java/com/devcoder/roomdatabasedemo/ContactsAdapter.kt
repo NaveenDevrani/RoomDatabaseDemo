@@ -24,26 +24,30 @@ class ContactsAdapter(private val callBack: OnItemClick) : ListAdapter<UserDetai
         holder.bind(getItem(position))
     }
 
-//    override fun getItemCount() = list.size
-
     inner class ViewHolder(private val binding: ItemContactBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
         fun bind(model: UserDetails) {
-            binding.tvName.text = model.contact.name
-            binding.tvPhone.text = model.contact.phone
-            binding.tvAddress.text = model.contactInfo.address
-            binding.tvFirstLetter.text = model.contact.name?.first()?.uppercase().toString()
-            binding.tvFirstLetter.backgroundTintList = ColorStateList.valueOf(getRandomColor())
-            binding.root.setOnLongClickListener {
-                callBack.onDelete(model)
-                true
+            binding.apply {
+                binding.tvName.text = model.contact.name
+                binding.tvPhone.text = model.contact.phone
+                binding.tvAddress.text = model.contactInfo.address
+                binding.tvFirstLetter.text = model.contact.name?.first()?.uppercase().toString()
+                binding.tvFirstLetter.backgroundTintList = ColorStateList.valueOf(getRandomColor())
+                binding.root.setOnLongClickListener {
+                    callBack.onDelete(model)
+                    true
+                }
+                root.setOnClickListener {
+                    callBack.onItemClick(model)
+                }
             }
         }
     }
 
     interface OnItemClick {
         fun onDelete(model: UserDetails)
+        fun onItemClick(model: UserDetails)
     }
 
     class ContactDiffUtil : DiffUtil.ItemCallback<UserDetails>() {
